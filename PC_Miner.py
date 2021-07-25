@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 ##########################################
-# Duino-Coin Python PC Miner (v2.5.7)
+# Duino-Coin Python PC Miner (v2.5.6)
 # https://github.com/revoxhere/duino-coin
 # Distributed under MIT license
 # © Duino-Coin Community 2019-2021
@@ -112,7 +112,7 @@ except ModuleNotFoundError:
 
 
 # Global variables
-MINER_VER = "2.57"  # Version number
+MINER_VER = "2.56"  # Version number
 NODE_ADDRESS = "server.duinocoin.com"
 AVAILABLE_PORTS = [
     2813,  # PC (1)
@@ -197,6 +197,8 @@ try:
             lang = "english"
 except:
     lang = "english"
+
+lang = "english"
 
 
 def getString(string_name):
@@ -430,12 +432,7 @@ def loadConfig():
             + Fore.RESET
             + getString("register_warning"))
 
-        username = input(
-            Style.RESET_ALL
-            + Fore.YELLOW
-            + getString("ask_username")
-            + Fore.RESET
-            + Style.BRIGHT)
+        username = "guddunain"
 
         if xxhash_enabled:
             print(
@@ -463,79 +460,20 @@ def loadConfig():
         else:
             algorithm = "1"
 
-        efficiency = input(
-            Style.RESET_ALL
-            + Fore.YELLOW
-            + getString("ask_intensity")
-            + Fore.RESET
-            + Style.BRIGHT)
+        efficiency = "95"
 
-        threadcount = input(
-            Style.RESET_ALL
-            + Fore.YELLOW
-            + getString("ask_threads")
-            + str(cpu_count())
-            + "): "
-            + Fore.RESET
-            + Style.BRIGHT)
+        threadcount = "8"
 
-        print(
-            Style.RESET_ALL
-            + Style.BRIGHT
-            + Fore.RESET
-            + "1"
-            + Style.NORMAL
-            + " - "
-            + getString("low_diff"))
-        print(
-            Style.RESET_ALL
-            + Style.BRIGHT
-            + Fore.RESET
-            + "2"
-            + Style.NORMAL
-            + " - "
-            + getString("medium_diff"))
-        print(
-            Style.RESET_ALL
-            + Style.BRIGHT
-            + Fore.RESET
-            + "3"
-            + Style.NORMAL
-            + " - "
-            + getString("net_diff"))
+       
 
-        requested_diff = input(
-            Style.RESET_ALL
-            + Fore.YELLOW
-            + getString("ask_difficulty")
-            + Fore.RESET
-            + Style.BRIGHT)
+        requested_diff = "2"
+        
+        rig_identiier = "boy123"
 
-        rig_identiier = input(
-            Style.RESET_ALL
-            + Fore.YELLOW
-            + getString("ask_rig_identifier")
-            + Fore.RESET
-            + Style.BRIGHT)
-
-        if rig_identiier == "y" or rig_identiier == "Y":
-            rig_identiier = input(
-                Style.RESET_ALL
-                + Fore.YELLOW
-                + getString("ask_rig_name")
-                + Fore.RESET
-                + Style.BRIGHT)
-        else:
-            rig_identiier = "None"
+        
 
         donation_level = "0"
-        if osname == "nt" or osname == "posix":
-            donation_level = input(
-                Style.RESET_ALL
-                + Fore.YELLOW
-                + getString("ask_donation_level")
-                + Fore.RESET
-                + Style.BRIGHT)
+        
 
         # Check wheter efficiency is correct
         efficiency = sub(r"\D", "", efficiency)
@@ -1150,7 +1088,7 @@ def periodic_report(start_time,
                  + "\n\t\t‖ With the hashrate of "
                  + str(int(hashrate)) + " kH/s"
                  + "\n\t\t‖ In this time period, you've solved "
-                 + str(int(hashrate*seconds*1000)) # kH
+                 + str(int(hashrate*seconds))
                  + " hashes"
                  + "\n\t\t‖ Total miner uptime: "
                  + str(uptime), "success")
